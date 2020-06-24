@@ -1,0 +1,119 @@
+Order,Dataset,Variable,Label,Data Type,Length,Significant Digits,Format,Mandatory,Codelist,Origin,Pages,Method,Predecessor,Role,Comment,Source Variable,Programmer Derivation 
+1,AE,STUDYID,Study Identifier,text,11,,,Yes,,Protocol,,,,Identifier,STUDYID,,"Assign as ""ALN-GO1-005"""
+2,AE,DOMAIN,Domain Abbreviation,text,2,,,Yes,DOMAIN,Assigned,,,,Identifier,AE,,"Assign as ""AE"""
+3,AE,USUBJID,Unique Subject Identifier,text,20,,,No,,Assigned,,,,Identifier,,,"Concatenate of STUDYID, '-'  and SUBJID."
+4,AE,SUBJID,Subject Identifier for the Study,text,8,,,Yes,,CRF,2, ,,Topic,,SUBJECT, 
+5,AE,AESEQ,Sequence Number,integer,8,,,Yes,,Derived,,SEQ,,Identifier,,,Sort observations by the dataset metadata keys and assign xxSEQ 1-n within USUBJID.
+6,AE,AESPID,Sponsor-Defined Identifier,text,5,,,No,,CRF,"566, 616",,,Identifier,,RECORDPOSITION,Map As-Is (For Char variables use UPCASE)
+7,AE,AELNKID,Link ID,text,9,,,No,,Assigned,,,,Identifier,,,Drop. Not used by study.
+8,AE,AETERM,Reported Term for the Adverse Event,text,181,,,Yes,,CRF,604,,,Topic,,AETERM,"For AE module, Map As-Is (For Char variables use UPCASE)"
+9,AE,AELLT,Lowest Level Term,text,47,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_LLT,
+10,AE,AELLTCD,Lowest Level Term Code,integer,8,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_LLT_CODE,
+11,AE,AEDECOD,Dictionary-Derived Term,text,47,,,Yes,MEDDRA,Assigned,,,,Synonym Qualifier,,AETERM_PT,
+12,AE,AEPTCD,Preferred Term Code,integer,8,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_PT_CODE,
+13,AE,AEHLT,High Level Term,text,62,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_HLT,
+14,AE,AEHLTCD,High Level Term Code,integer,8,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_HLT_CODE,
+15,AE,AEHLGT,High Level Group Term,text,86,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_HLGT,
+16,AE,AEHLGTCD,High Level Group Term Code,integer,8,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_HLGT_CODE,
+17,AE,AECAT,Category for Adverse Event,text,34,,,No,AECAT,Assigned,,,,Grouping Qualifier,,,
+18,AE,AESCAT,Subcategory for Adverse Event,text,25,,,No,AESCAT,Assigned,,,,Grouping Qualifier,,,
+19,AE,AEBODSYS,Body System or Organ Class,text,67,,,No,MEDDRA,Assigned,,,,Record Qualifier,,AETERM_SOC,
+20,AE,AEBDSYCD,Body System or Organ Class Code,integer,8,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_SOC_CODE,
+21,AE,AESOC,Primary System Organ Class,text,67,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_SOC,
+22,AE,AESOCCD,Primary System Organ Class Code,integer,8,,,No,MEDDRA,Assigned,,,,Variable Qualifier,,AETERM_SOC_CODE,
+27,AE,AESEV,Severity/Intensity,text,8,,,No,AESEV,CRF,605,,,Record Qualifier,,AEGRAD,Map As-Is (For Char variables use UPCASE)
+28,AE,AESER,Serious Event,text,1,,,No,NY,CRF,606,,,Record Qualifier,,AESER_STD,Map As-Is (For Char variables use UPCASE)
+29,AE,AEACN,Action Taken with Study Treatment,text,16,,,No,AEACN,CRF,605,,,Record Qualifier,,AEACNINT,"If more than one action is selected then AEACN=""MULTIPLE"" and the individual responses in separate SUPPAE records"
+30,AE,AEREL,Causality,text,1,,,No,AEREL,CRF,604,,,Record Qualifier,,AECAUS,Map As-Is (For Char variables use UPCASE)
+31,AE,AEOUT,Outcome of Adverse Event,text,32,,,No,AEOUT,CRF,607,,,Record Qualifier,,AEOUT,
+32,AE,AESCONG,Congenital Anomaly or Birth Defect,text,1,,,No,Y,CRF,607,,,Record Qualifier,,AESCONG_STD,"If 1 then assign as ""Y"""
+33,AE,AESDISAB,Persist or Signif Disability/Incapacity,text,1,,,No,Y,CRF,607,,,Record Qualifier,,AESDISAB_STD,"If 1 then assign as ""Y"""
+34,AE,AESDTH,Results in Death,text,1,,,No,Y,CRF,606,,,Record Qualifier,,AESDTH_STD,"If 1 then assign as ""Y"""
+35,AE,AESHOSP,Requires or Prolongs Hospitalization,text,1,,,No,Y,CRF,606,,,Record Qualifier,,AESHOSP_STD,"If 1 then assign as ""Y"""
+36,AE,AESLIFE,Is Life Threatening,text,1,,,No,Y,CRF,606,,,Record Qualifier,,AESLIFE_STD,"If 1 then assign as ""Y"""
+37,AE,AESMIE,Other Medically Important Serious Event,text,1,,,No,Y,CRF,607,,,Record Qualifier,,AESMIE_STD,"If 1 then assign as ""Y"""
+38,AE,AECONTRT,Concomitant or Additional Trtmnt Given,text,1,,,No,Y,CRF,605,,,Record Qualifier,,,"If AE.AETRTCM or AE.AETRTNDT eq '1' then assign as ""Y"""
+39,AE,EPOCH,Epoch,text,20,,,No,EPOCH,Derived,,EPOCH,,Timing,,,Check Computational Method
+40,AE,AESTDTC,Start Date/Time of Adverse Event,datetime,19,,,No,,CRF,604,,,Timing,,"AESTDT
+AESTTM",Convert to ISO
+41,AE,AEENDTC,End Date/Time of Adverse Event,datetime,19,,,No,,CRF,604,,,Timing,,"AEENDT
+AEENTM
+AEENTMUN",Convert to ISO
+42,AE,AESTDY,Study Day of Start of Adverse Event,integer,8,,,No,,Derived,,DY,,Timing,,,Check Computational Method
+43,AE,AEENDY,Study Day of End of Adverse Event,integer,8,,,No,,Derived,,DY,,Timing,,,Check Computational Method
+44,AE,AEENRF,End Relative to Reference Period,text,200,,,No,STENRF,CRF,292,,,Timing,,CMONGO,
+1,DM,STUDYID,Study Identifier,text,11,,,Yes,,Protocol,,,,Identifier,STUDYID,,"Assign as ""ALN-GO1-005"""
+2,DM,DOMAIN,Domain Abbreviation,text,2,,,Yes,DOMAIN,Assigned,,,,Identifier,DM,,
+3,DM,USUBJID,Unique Subject Identifier,text,20,,,Yes,,Assigned,,,,Identifier,,,"Concatenate of STUDYID, '-'  and SUBJID."
+4,DM,SUBJID,Subject Identifier for the Study,text,8,,,Yes,,CRF,2,,,Topic,,SUBJIFULL,
+5,DM,RFSTDTC,Subject Reference Start Date/Time,datetime,,,,No,,Derived,,,,Record Qualifier,,,For Screen Failure equals to Date of Informed Consent
+6,DM,RFENDTC,Subject Reference End Date/Time,datetime,,,,No,,Derived,,,,Record Qualifier,,,Derive as the Last Date subject participated in the Trial including both database and external data.
+7,DM,RFXSTDTC,Date/Time of First Study Treatment,datetime,,,,No,,CRF,55,RFTDTC,,Record Qualifier,,EXDT_RAW,Should also Equal to EX.EXSTDTC
+8,DM,RFXENDTC,Date/Time of Last Study Treatment,datetime,,,,No,,CRF,55,,,Record Qualifier,,EXDT_RAW,Should also Equal to EX.EXENDTC last dose of subject
+9,DM,RFICDTC,Date/Time of Informed Consent,datetime,,,,No,,CRF,10,,,Record Qualifier,,DMIFCDT,
+10,DM,RFPENDTC,Date/Time of End of Participation,datetime,,,,No,,Derived,,RFPENDTC,,Record Qualifier,,,Derive as the Last Date subject participated in the Trial including both database and external data.
+11,DM,DTHDTC,Date/Time of Death,datetime,,,,No,,CRF,"301, 319",,,Record Qualifier,,"DSCMPDT,
+AESDTHDT,
+RENEPSDTH",
+12,DM,DTHFL,Subject Death Flag,text,1,,,No,Y,CRF,"301, 319",,,Record Qualifier,,"AESDTH, RENEPSDTH",
+13,DM,SITEID,Study Site Identifier,text,3,,,Yes,,Assigned,,,,Record Qualifier,,,Extract SITEID
+14,DM,INVID,Investigator Identifier,text,8,,,,,Assigned,,,,Record Qualifier,,,Map using Study specific Siteinfo sheet under: S:\Biometrics\ALN-GO1\ALN-GO1-005\Documents\SDTM
+15,DM,INVNAM,Investigator Name,text,15,,,,,Assigned,,,,Synonym Qualifier,,,Map using Study specific Siteinfo sheet under: S:\Biometrics\ALN-GO1\ALN-GO1-005\Documents\SDTM
+16,DM,BRTHDTC,Date/Time of Birth,datetime,,,,No,,CRF,9,,,Record Qualifier,,DMBRTHDT,
+17,DM,AGE,Age,integer,8,,,No,,CRF,9,,,Record Qualifier,,DMAGE,
+18,DM,AGEU,Age Units,text,5,,,No,AGEU,CRF,9,,,Variable Qualifier,,DMAGE_UN,"Set to ""YEARS"" or ""MONTHS"""
+19,DM,SEX,Sex,text,1,,,Yes,SEX,CRF,9,,,Record Qualifier,,DMSEX,
+20,DM,RACE,Race,text,41,,,No,RACE,CRF,9,,,Record Qualifier,RACE,"DMRACEASIAN,
+DMJAPANYN,
+DMRACEAMIND,
+DMRACEHAWPAC,
+DMRACEWHILE,
+DMRACEOTH,
+DMRACEOTHSPC,
+",
+21,DM,ETHNIC,Ethnicity,text,22,,,No,ETHNIC,CRF,9,,,Record Qualifier,,DMETHNIC,
+22,DM,ARMCD,Planned Arm Code,text,6,,,Yes,ARMCD,CRF,10,,,Record Qualifier,,DMCOHORT_STD,"if DMCOHORT_STD eq 'A' then do; ARMCD='A'; ARM='Cohort A'; end;
+if DMCOHORT_STD eq 'B' then do; ARMCD='B'; ARM='Cohort B'; end;"
+23,DM,ARM,Description of Planned Arm,text,9,,,Yes,ARM,CRF,10,,,Synonym Qualifier,ARM,DMCOHORT_STD,"if DMCOHORT_STD eq 'A' then do; ARMCD='A'; ARM='Cohort A'; end;
+if DMCOHORT_STD eq 'B' then do; ARMCD='B'; ARM='Cohort B'; end;"
+24,DM,ACTARMCD,Actual Arm Code,text,6,,,Yes,ACTARMCD,Assigned,,,,Record Qualifier,ACTARMCD,,Map as-is from ARMCD
+25,DM,ACTARM,Description of Actual Arm,text,9,,,Yes,ACTARM,Assigned,,,,Synonym Qualifier,ACTARM,,Map as-is from ARM
+26,DM,COUNTRY,Country,text,3,,,Yes,COUNTRY,Assigned,,,,Record Qualifier,,,Remap using the ISO3166 format using the spreadsheet 'cdisc_country_codes3.csv' and Study specific Siteinfo sheet under: S:\Biometrics\ALN-GO1\ALN-GO1-005\Documents\SDTM
+27,DM,DMDTC,Date/Time of Collection,datetime,,,,No,,CRF,,,,Timing,,,When FolderName=Screening. Convert to ISO
+28,DM,DMDY,Study Day of Collection,integer,8,,,No,,Derived,,DY,,Timing,,,See Computational Method
+1,EX,STUDYID,Study Identifier,text,11,,,Yes,,Protocol,,,,Identifier,STUDYID,,"Assign as ""ALN-GO1-005"""
+2,EX,DOMAIN,Domain Abbreviation,text,2,,,Yes,DOMAIN,Assigned,,,,Identifier,EX,,
+3,EX,USUBJID,Unique Subject Identifier,text,20,,,No,,Assigned,,,,Identifier,,,"Concatenate of STUDYID, '-'  and SUBJID."
+4,EX,SUBJID,Subject Identifier for the Study,text,8,,,Yes,,CRF,2,,,Topic,,SUBJIFULL,Set to ex.Subjid
+5,EX,EXSEQ,Sequence Number,integer,8,,,Yes,,Derived,,SEQ,,Identifier,,,Sort observations by the dataset metadata keys and assign xxSEQ 1-n within USUBJID.
+6,EX,EXLNKID,Link ID,text,6,,,No,,Assigned,,,,Identifier,,,
+7,EX,EXTRT,Name of Treatment,text,9,,,Yes,EXTRT,Assigned,,,,Topic,EXTRT,,Set to 'Lumasiran'
+8,EX,EXDOSE,Dose,float,8,3,,No,,Derived,,EXDOSE,,Record Qualifier,,,ex.EXDSPLN_STD not missing records
+9,EX,EXDOSU,Dose Units,text,5,,,No,EXDOSU,Assigned,,,,Variable Qualifier,EXDOSU,,"ex.EXDSPLN_STD take units part ,
+If Total volume administered (ex.EXVOLADM) is  colleceted then
+EXDOSE is administered dose level, and it should be derived from 3 components.  Concentration, administered volume, and body weight.  The formula is (Concentration * administered volume)/ body weight.(WEIGHT is taken from VS)"
+10,EX,EXDOSFRM,Dose Form,text,8,,,No,EXDOSFRM,Assigned,,,,Variable Qualifier,EXDOSFRM,,set to 'SOLUTION';
+11,EX,EXROUTE,Route of Administration,text,12,,,No,EXROUTE,Assigned,,,,Variable Qualifier,EXROUTE,,set to 'SUBCUTANEOUS'
+12,EX,EXLOC,Location of Dose Administration,text,40,,,No,,CRF,55 56,,,Record Qualifier,,"EXLOC1
+","when ex.EXLOC1 in (QUADRANT) then EXLOC upcased ""ABDOMINAL REGION"" 
+when ex.EXLOC1 in (ARM LOW,ARM HIGH ) then EXLOC upcased ""ARM""
+when ex.EXLOC1 in (THIGH ) then EXLOC upcased ""THIGH""
+        
+    "
+13,EX,EXLAT,Laterality,text,40,,,No,,CRF,55 56,,,Record Qualifier,,EXLOC1,"    
+set to ex.EXLOC1 is ""LEFT"" then EXLAT = ""LEFT"", 
+set to ex.EXLOC1 is ""LEFT"" then EXLAT= ""RIGHT"" (UPCASED)"
+14,EX,EXDIR,Directionality,text,40,,,No,,CRF,55 56,,,Variable Qualifier,,EXLOC1,"(UPCASED) 
+set to ex.EXLOC1 is ""UPPER"" then EXDIR = ""UPPER""
+set to ex.EXLOC1 is""LOWER"" then EXDIR = ""LOWER""
+"
+16,EX,VISITNUM,Visit Number,integer,8,,,No,,Assigned,,,,Timing,,,Assign based on TV
+17,EX,VISIT,Visit Name,text,8,,,No,,Protocol,,,,Timing,,,Assign based on TV
+18,EX,VISITDY,Planned Study Day of Visit,integer,8,,,No,,Derived,,VISITDY,,Timing,,,Assign based on TV
+19,EX,EPOCH,Epoch,text,20,,,No,EPOCH,Derived,,EPOCH,,Timing,,,Assign based on SDTM.se
+15,EX,EXSTDTC,Start Date/Time of Treatment,datetime,,,,No,,CRF,55,,,Timing,,"EXSTDT
+EXSTTM",For raw EX Records  set to datepart of ex.EXDT |ex.EXTM in ISO8601 format  
+16,EX,EXENDTC,End Date/Time of Treatment,datetime,,,,No,,CRF,55,,,Timing,,"EXENDT
+EXENTM",For raw EX Records  set to datepart of ex.EXDT |ex.EXTM in ISO8601 format  
+17,EX,EXSTDY,Study Day of Start of Treatment,integer,8,,,No,,Derived,,DY,,Timing,,,
+18,EX,EXENDY,Study Day of End of Treatment,integer,8,,,No,,Derived,,DY,,Timing,,,
