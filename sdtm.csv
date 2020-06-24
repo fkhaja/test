@@ -1,4 +1,4 @@
-Order,Dataset,Variable,Label,Data Type,Length,Significant Digits,Format,Mandatory,Codelist,Origin,Pages,Method,Predecessor,Role,Comment,Source Variable,Programmer Derivation 
+Order,Dataset,Variable,Label,DataType,Length,SignificantDigits,Format,Mandatory,Codelist,Origin,Pages,Method,Predecessor,Role,Comment,Source Variable,ProgrammerDerivation 
 1,AE,STUDYID,Study Identifier,text,11,,,Yes,,Protocol,,,,Identifier,STUDYID,,"Assign as ""ALN-GO1-005"""
 2,AE,DOMAIN,Domain Abbreviation,text,2,,,Yes,DOMAIN,Assigned,,,,Identifier,AE,,"Assign as ""AE"""
 3,AE,USUBJID,Unique Subject Identifier,text,20,,,No,,Assigned,,,,Identifier,,,"Concatenate of STUDYID, '-'  and SUBJID."
