@@ -1,4 +1,4 @@
-Order,Dataset,Variable,Label,Data Type,Length,Significant Digits,Format,Mandatory,Codelist,Origin,Pages,Method,Predecessor,Role,Comment,ProgrammingNotes
+Order,Dataset,Variable,Label,DataType,Length,Significant Digits,Format,Mandatory,Codelist,Origin,Pages,Method,Predecessor,Role,Comment,ProgrammingNotes
 1,ADSL,STUDYID,Study Identifier,text,,,,Yes,,Predecessor,,,DM.STUDYID,,,
 2,ADSL,USUBJID,Unique Subject Identifier,text,,,,Yes,,Predecessor,,,DM.USUBJID,,,
 3,ADSL,SUBJID,Subject Identifier for the Study,text,,,,Yes,,Predecessor,,,DM.SUBJID,,,
