@@ -1,0 +1,240 @@
+Order,Dataset,Variable,Label,Data Type,Length,Significant Digits,Format,Mandatory,Codelist,Origin,Pages,Method,Predecessor,Role,Comment,ProgrammingNotes
+1,ADSL,STUDYID,Study Identifier,text,,,,Yes,,Predecessor,,,DM.STUDYID,,,
+2,ADSL,USUBJID,Unique Subject Identifier,text,,,,Yes,,Predecessor,,,DM.USUBJID,,,
+3,ADSL,SUBJID,Subject Identifier for the Study,text,,,,Yes,,Predecessor,,,DM.SUBJID,,,
+4,ADSL,SITEID,Study Site Identifier,text,,,,Yes,,Predecessor,,,DM.SITEID,,,
+5,ADSL,COUNTRY,Country,text,,,,No,COUNTRY,Predecessor,,,DM.COUNTRY,,,
+5,ADSL,REGION1,Geographic Region 1,text,,,,No,REGION1,Derived,,ADSL_REGIONy,,,,
+5,ADSL,REGION1N,Geographic Region 1 (N),integer,8,,,No,REGION1N,Assigned,,,,,ASSIGN_CODELIST,
+5,ADSL,BRTHDTC,Date/Time of Birth,date,,,ISO 8601,No,,Predecessor,,,DM.BRTHDTC,,,
+5,ADSL,BRTHYR,Year of Birth,integer,8,,,No,,Derived,,ADSL_BRTHYR,,,,
+5,ADSL,BRTHDT,Date of Birth,integer,8,,date9.,No,,Derived,,ADSL_BRTHDT,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,BRTHDTF,Date of Birth Imputation Flag,text,1,,,No,DATEFL,Assigned,,,,,DATEFL,Include if deriving BRTHDT and partial dates are present.
+5,ADSL,AGE,Age,integer,8,,,No,,Predecessor,,,DM.AGE,,,
+5,ADSL,AGEU,Age Units,text,,,,No,AGEU,Predecessor,,,DM.AGEU,,,
+5,ADSL,AAGECCM,CRF Analysis Age at Consent (Months),float,8,,,No,,Derived,,ADSL_AAGECCM,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,AAGECCY,CRF Analysis Age at Consent (Years),float,8,,,No,,Derived,,ADSL_AAGECCY,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,AAGECIM,Imputed Analysis Age at Consent (Months),float,8,,,No,,Derived,,ADSL_AAGECIM,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,AAGECIY,Imputed Analysis Age at Consent (Years),float,8,,,No,,Derived,,ADSL_AAGECIY,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,AAGED1M,Analysis Age at First Dose (Months),float,8,,,No,,Derived,,ADSL_AAGED1M,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,AAGED1Y,Analysis Age at First Dose (Years),float,8,,,No,,Derived,,ADSL_AAGED1Y,,,,Include if DM.AGE is different from analysis age.
+5,ADSL,AGEGR1,Pooled Age Group 1,text,,,,No,AGEGR1,Derived,,ADSL_AGEGR1,,,,
+5,ADSL,AGEGR1N,Pooled Age Group 1 (N),integer,8,,,No,AGEGR1N,Assigned,,,,,ASSIGN_CODELIST,
+5,ADSL,SEX,Sex,text,,,,Yes,SEX,Predecessor,,,DM.SEX,,,
+5,ADSL,RACE,Race,text,,,,No,RACE,Predecessor,,,DM.RACE,,,
+5,ADSL,RACEOTH,"Race Other, Specify",text,,,,No,,Predecessor,,,SUPPDM.QVAL where SUPPDM.QNAM = 'RACEOTH',,,
+5,ADSL,ARACE,Analysis Race,text,,,,No,ARACE,Derived,,ADSL_ARACE,,,,
+5,ADSL,ARACEN,Analysis Race (N),integer,8,,,No,ARACEN,Assigned,,ADSL_ARACEN,,,ASSIGN_CODELIST,
+5,ADSL,ETHNIC,Ethnicity,text,,,,No,ETHNIC,Predecessor,,,DM.ETHNIC,,,
+5,ADSL,ENRLFL,Enrolled Population Flag,text,1,,,Yes,NY,Derived,,ADSL_ENRLFL,,,,
+5,ADSL,SAFFL,Safety Population Flag,text,1,,,Yes,NY,Derived,,ADSL_SAFFL,,,,
+5,ADSL,FASFL,Full Analysis Set Population Flag,text,1,,,Yes,NY,Derived,,ADSL_FASFL,,,,To be used only if a full analysis set has been defined in the SAP.
+5,ADSL,PKFL,Pharmacokinetic Population Flag,text,1,,,Yes,NY,Derived,,ADSL_PKFL,,,,To be used only if a PK analysis set has been defined in the SAP.
+5,ADSL,ARM,Description of Planned Arm,text,,,,Yes,ARM,Predecessor,,,DM.ARM,,,
+5,ADSL,ACTARM,Description of Actual Arm,text,,,,Yes,ACTARM,Predecessor,,,DM.ACTARM,,,Only needed if ACTARM is different from ARM.
+5,ADSL,TRT01P,Planned Treatment for Period 01,text,,,,No,TRT01,Predecessor,,,DM.ARM,,,Values should match table columns.
+5,ADSL,TRT01PN,Planned Treatment for Period 01 (N),integer,8,,,No,TRT01N,Assigned,,,,,ASSIGN_CODELIST,
+5,ADSL,TRTSDT,Date of First Exposure to Treatment,integer,8,,date9.,No,,Derived,,ADSL_TRTSDT,,,,
+5,ADSL,TRTSDTM,Datetime of First Exposure to Treatment,integer,8,,datetime16.,No,,Derived,,ADSL_TRTSDTM,,,,Only needed if both date and time have been collected.
+5,ADSL,TRTEDT,Date of Last Exposure to Treatment,integer,8,,date9.,No,,Derived,,ADSL_TRTEDT,,,,
+5,ADSL,TRTEDTM,Datetime of Last Exposure to Treatment,integer,8,,datetime16.,No,,Derived,,ADSL_TRTEDTM,,,,Only needed if both date and time have been collected.
+5,ADSL,TRTEDY,Relative Day of Last Exposure to Trt,integer,8,,,No,,Derived,,STUDYDAY,,,,
+5,ADSL,TRT2EDY,Rel Day of Last Exp to Trt (Ext Period),integer,8,,,No,,Derived,,A2DY,,,,
+5,ADSL,RFICDT,Date of Informed Consent ,integer,8,,date9.,No,,Derived,,ADSL_RFICDT,,,,
+5,ADSL,PROTVER,Protocol Version Enrolled Under,text,,,,Yes,PROTOCOL,Predecessor,,,SUPPDS.QVAL where SUPPDS.QNAM='PROTOCOL',,ADSL_PROTVER,"If multiple screenings before enrollment, use protocol version they were enrolled under."
+5,ADSL,CUTOFFDT,Cutoff Date,integer,,,date9.,No,,Derived,,ADSL_CUTOFFDT,,,,
+5,ADSL,APHASE1,Description of Phase 1,text,,,,No,APHASE,Assigned,,,,,APHASE1,Only needed if multiple analysis phases are defined.
+5,ADSL,PH1SDT,Phase 1 Start Date,integer,8,,date9.,No,,Derived,,ADSL_TRTSDT,,,,Only needed if multiple analysis phases are defined.
+5,ADSL,PH1SDTM,Phase 1 Start Datetime,integer,8,,datetime16.,No,,Derived,,ADSL_TRTSDTM,,,,Only needed if multiple analysis phases are defined and both date and time have been collected.
+5,ADSL,PH1EDT,Phase 1 End Date,integer,8,,date9.,No,,Derived,,ADSL_PH1EDT,,,,Only needed if multiple analysis phases are defined.
+5,ADSL,PH1EDTM,Phase 1 End Datetime,integer,8,,datetime16.,No,,Derived,,ADSL_PH1EDTM,,,,Only needed if multiple analysis phases are defined and both date and time have been collected.
+165,ADSL,APHASE2,Description of Phase 2,text,,,,No,APHASE,Assigned,,,,,APHASE2,Only needed if multiple analysis phases are defined.
+166,ADSL,PH2SDT,Phase 2 Start Date,integer,8,,date9.,No,,Derived,,ADSL_PH2SDT,,,,Only needed if multiple analysis phases are defined.
+167,ADSL,PH2SDTM,Phase 2 Start Datetime,integer,8,,datetime16.,No,,Derived,,ADSL_PH2SDTM,,,,Only needed if multiple analysis phases are defined and both date and time have been collected.
+168,ADSL,PH2EDT,Phase 2 End Date,integer,8,,date9.,No,,Derived,,ADSL_PH2EDT,,,,Only needed if multiple analysis phases are defined.
+169,ADSL,MONTH6DT,Date of Month 6 Visit,integer,8,,date9.,No,,Derived,,ADSL_MONTH6DT,,,,
+170,ADSL,MONTH6FL,Completed Month 6 Visit Flag,text,,,,Yes,NY,Derived,,ADSL_MONTH6FL,,,,
+171,ADSL,EXTFL,Continued to Extension Period,text,,,,Yes,NY,Derived,,ADSL_EXTFL,,,,
+172,ADSL,TOTDURD,Duration of Exposure (days),integer,,,,Yes,,Derived,,ADSL_TOTDURD,,,,
+180,ADSL,EOTSTT,End of Treatment Status,text,,,,Yes,SBJTSTAT,Derived,,ADSL_EOTSTT,,,,
+181,ADSL,EOTSTTL,End of Treatment Status for Listing,text,,,,Yes,NY,Derived,,ADSL_EOTSTTL,,,,
+182,ADSL,EOTDT,End of Treatment Date,integer,8,,date9.,No,,Derived,,ADSL_EOTDT,,,,
+183,ADSL,EOTDY,End of Treatment Relative Day,integer,8,,,No,,Derived,,STUDYDAY,,,,
+184,ADSL,EOT2DY,End of Trt Rel Day (Ext Period),integer,8,,,No,,Derived,,A2DY,,,,
+185,ADSL,DCTREAS,Reason for Discontinuation of Treatment,text,,,,No,DSDECOD,Predecessor,,ADSL_DCTREAS,DS.DSDECOD when DS.DSCAT = 'DISPOSITION EVENT' and DS.DSSCAT = 'END OF TREATMENT' and DS.DSDECOD ne 'COMPLETED'.,,,
+186,ADSL,DCTREASP,Reason Specify for Discont of Treatment,text,,,,No,,Derived,,ADSL_DCTREASP,,,,
+187,ADSL,EOSSTT,End of Study Status,text,,,,Yes,SBJTSTAT,Derived,,ADSL_EOSSTT,,,,
+188,ADSL,EOSSTTL,End of Study Status for Listing,text,,,,Yes,NY,Derived,,ADSL_EOSSTTL,,,,
+189,ADSL,EOSDT,End of Study Date,integer,8,,date9.,No,,Derived,,ADSL_EOSDT,,,,
+190,ADSL,EOSDY,End of Study Relative Day,integer,8,,,No,,Derived,,STUDYDAY,,,,
+191,ADSL,EOS2DY,End of Study Rel Day (Ext Period),integer,8,,,No,,Derived,,A2DY,,,,
+192,ADSL,DCSREAS,Reason for Discontinuation from Study,text,,,,No,DSDECOD,Predecessor,,,DS.DSDECOD when DS.DSCAT = 'DISPOSITION EVENT' and DS.DSSCAT = 'END OF STUDY and DS.DSDECOD ne 'COMPLETED'..,,,
+193,ADSL,DCSREASP,Reason Spec for Discont from Study ,text,,,,No,,Derived,,ADSL_DCSREASP,,,,
+194,ADSL,FCNSWDDT,Date Follow-up Consent Withdrawn,integer,,,date9.,No,,Derived,,ADSL_FCNSWDDT,,,,
+210,ADSL,DTHDT,Date of Death,integer,8,,date9.,No,,Derived,,ADSL_DTHDT,,,,
+211,ADSL,DTHDY,Relative Day of Death,integer,8,,,No,,Derived,,STUDYDAY,,,,
+212,ADSL,DTHAPH,Analyis Phase of Death,text,,,,Yes,APHASE,Derived,,ADSL_DTHAPH,,,,
+220,ADSL,HEIGHTBL,Baseline Height (cm),float,8,,,No,,Derived,,ADSL_HEIGHTBL,,,,
+221,ADSL,WEIGHTBL,Baseline Weight (kg),float,8,,,No,,Derived,,ADSL_WEIGHTBL,,,,
+222,ADSL,WTBLGR1,Baseline Weight Group 1,text,,,,No,WTBLGR1,Derived,,ADSL_WTBLGR1,,,,
+223,ADSL,WTBLGR1N,Baseline Weight Group 1 (N),integer,8,,,No,WTBLGR1N,Assigned,,,,,ASSIGN_CODELIST,
+224,ADSL,BMIBL,Baseline BMI (kg/m2),float,8,,,No,,Derived,,ADSL_BMIBL,,,,
+230,ADSL,DIAGDTC,Date of Diagnosis,date,,,ISO 8601,No,,Predecessor,,,MH.MHSTDTC when MH.MHCAT = 'PH1 HISTORICAL INFORMATION' and MH.MHTERM = 'PH1',,,
+231,ADSL,DIAGDT,Date of Diagnosis (N),integer,8,,date9.,No,,Derived,,ADSL_DIAGDT,,,,
+232,ADSL,DIAGDTF,Diagnosis Date Imputation Flag,text,1,,,No,DATEFL,Assigned,,,,,DATEFL,
+233,ADSL,DIAGDURM,Time Since Diagnosis (months),float,8,,,No,,Derived,,ADSL_DIAGDURM,,,,
+234,ADSL,AGEDIAGM,Age at Diagnosis (months),float,8,,,No,,Derived,,ADSL_AGEDIAGM,,,,
+240,ADSL,SYMSTDTC,Date of Symptom Onset,date,,,ISO 8601,No,,Predecessor,,,FASTRESC when FAOBJ = 'Date of first PH1 symptoms' and FATESTCD = 'DATE',,,Only needed if symptom onset date displayed.
+241,ADSL,SYMSTDT,Date of Symptom Onset (N),integer,8,,date9.,No,,Derived,,ADSL_SYMSTDT,,,,Only needed if symptom onset date displayed.
+242,ADSL,SYMSTDTF,Symptom Onset Date Imputation Flag,text,1,,,No,DATEFL,Assigned,,,,,DATEFL,Only needed if symptom onset date displayed.
+243,ADSL,FSDGDURM,1st Symptoms to Diagnosis (months),float,8,,,No,,Derived,,ADSL_FSDGDURM,,,,
+244,ADSL,FSD1DURM,1st Symptoms to 1st Dose Date (months),float,8,,,No,,Derived,,ADSL_FSD1DURM,,,,
+245,ADSL,SYMFL,History of Symptomatic Renal Stone Flag,text,1,,,,NYU,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of symptomatic renal stone events in the subjects lifetime?' and FA.FATESTCD = 'OCCUR',,,
+246,ADSL,SYMNUM,Num of Sym Episode in Subj Lifetime,integer,8,,,,,Derived,,ADSL_SYMNUM,,,,
+247,ADSL,RENSFL,History of Renal Stones 12 M Prior Flag,text,1,,,No,NYU,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of renal stone events meeting the protocol definition during the 12 months prior to consent?' and FA.FATESTCD = 'OCCUR',,,
+248,ADSL,EVTNUM12,Num of Stone Events in 12 Months,integer,8,,,No,,Derived,,ADSL_EVTNUM12,,,,
+249,ADSL,EVTNM12A,Adj Num of Stone Events in 12 Months,float,8,,,No,,Derived,,ADSL_EVTNM12A,,,,
+250,ADSL,PHSIBN,Number of Siblings with PH1,integer,8,,,No,,Predecessor,,,Numeric version of SUPPMH.QVAL when SUPPMH.QNAM='SIBLINGS',,,
+251,ADSL,PHSIBGR1,Number of Siblings with PH1 Group 1,text,,,,No,PHSIBGR1,Derived,,ADSL_PHSIBGR1,,,,
+252,ADSL,VITB6FL,Vitamin B6 Prior to Study Use Flag,text,1,,,No,NY,Derived,,ADSL_VITB6FL,,,,
+253,ADSL,LITLFFL,History of Litho/Stn Proc Lifetime Flag,text,1,,,No,NYU,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of lithotripsy/stone removal procedures during the subjects lifetime?' and FA. FATESTCD = 'OCCUR',,,
+254,ADSL,LIT12MFL,History of Litho/Stn Procedure 12M Flag,text,1,,,No,NYU,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of lithotripsy/stone removal procedures during the past 12 months?' and FA.FATESTCD = 'OCCUR',,,
+255,ADSL,PYEFL,History of Pyelonephritis Flag,text,1,,,No,NY,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of pyelonephritis?' and FA.FATESTCD = 'OCCUR',,,
+256,ADSL,UTIFL,History of Urinary Tract Infections Flag,text,1,,,No,NY,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of Urinary Tract Infections (UTIs)?' and FA.FATESTCD = 'OCCUR',,,
+257,ADSL,NEPFL,History of Nephrocalcinosis Flag,text,1,,,No,NY,Predecessor,,,FA.FASTRESC when FA FAOBJ = 'History of nephrocalcinosis?' and FA.FATESTCD = 'OCCUR',,,
+258,ADSL,NEPSTT,Current Status of Nephrocalcinosis,text,9,,,No,NEPSTT,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'History of nephrocalcinosis?' and FA.FATESTCD = 'STATUS',,,
+259,ADSL,PREASYM,Asymptomatic Sym Prior to Stdy Entry,text,1,,,No,Y,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'Asymptomatic (familial screening)' and FA.FATESTCD = 'OCCUR',,,
+260,ADSL,PRERENS,Renal Symptom Prior to Study Entry,text,1,,,No,Y,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'Renal stone' and FA.FATESTCD = 'OCCUR',,,
+261,ADSL,PREESRD,ESRD Symptom Prior to Study Entry,text,1,,,No,Y,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'ESRD' and FA.FATESTCD = 'OCCUR',,,
+262,ADSL,PRENEPH,Nephrocalcinosis Sym Prior to Stdy Entry,text,1,,,No,Y,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'Nephrocalcinosis' and FA.FATESTCD = 'OCCUR',,,
+263,ADSL,PREOTHE,Other Symptom Prior to Study Entry,text,1,,,No,Y,Predecessor,,,FA.FASTRESC when FA.FAOBJ = 'Other' and FA.FATESTCD = 'OCCUR',,,
+264,ADSL,A1PR,Allele1 Genotype Pyridoxine Response,text,21,,,No,PR1,Predecessor,,,SC.SCSTRESC where SC.SCTESTCD ='A1PR',,,
+265,ADSL,A2PR,Allele2 Genotype Pyridoxine Response,text,21,,,No,PR2,Predecessor,,,SC.SCSTRESC where SC.SCTESTCD ='A2PR',,,
+266,ADSL,OPRTYPE,Overall Genotype Pyridoxine Response,text,4,,,No,PRTYPE,Derived,,ADSL_PRTYPE,,,,
+1,ADAE,STUDYID,Study Identifier,text,,,,Yes,,Predecessor,,,AE.STUDYID,,,
+2,ADAE,USUBJID,Unique Subject Identifier,text,,,,Yes,,Predecessor,,,AE.USUBJID,,,
+3,ADAE,SUBJID,Subject Identifier for the Study,text,,,,Yes,,Predecessor,,,ADSL.SUBJID,,,
+4,ADAE,SITEID,Study Site Identifier,text,,,,Yes,,Predecessor,,,ADSL.SITEID,,,
+5,ADAE,AESEQ,Sequence Number,integer,,,,No,,Predecessor,,,AE.AESEQ,,,
+6,ADAE,TRTP,Planned Treatment,text,,,,No,TRT01,Predecessor,,,ADSL.TRT01P,,,"Origin depends on study design.  If derived, populate Method.  If predecessor, populate Predecessor."
+7,ADAE,TRTPN,Planned Treatment (N),integer,,,,No,TRT01N,Assigned,,,ADSL.TRT01PN,,ASSIGN_CODELIST,
+10,ADAE,AETERM,Reported Term for the Adverse Event,text,101,,,Yes,,Predecessor,,,AE.AETERM,,,
+11,ADAE,AEDECOD,Dictionary-Derived Term,text,38,,,Yes,,Predecessor,,,AE.AEDECOD,,,
+12,ADAE,AEBODSYS,Body System or Organ Class,text,52,,,Yes,,Predecessor,,,AE.AEBODSYS,,,
+13,ADAE,AEBDSYCD,Body System or Organ Class Code,integer,8,,,No,,Predecessor,,,AE.AEBDSYCD,,,
+14,ADAE,AELLT,Lowest Level Term,text,34,,,No,,Predecessor,,,AE.AELLT,,,
+15,ADAE,AELLTCD,Lowest Level Term Code,integer,8,,,No,,Predecessor,,,AE.AELLTCD,,,
+16,ADAE,AEHLT,High Level Term,text,59,,,No,,Predecessor,,,AE.AEHLT,,,
+17,ADAE,AEHLTCD,High Level Term Code,integer,8,,,No,,Predecessor,,,AE.AEHLTCD,,,
+18,ADAE,AEHLGT,High Level Group Term,text,55,,,No,,Predecessor,,,AE.AEHLGT,,,
+19,ADAE,AEHLGTCD,High Level Group Term Code,integer,8,,,No,,Predecessor,,,AE.AEHLGTCD,,,
+20,ADAE,AESOC,Primary System Organ Class,text,52,,,No,,Predecessor,,,AE.AESOC,,,
+21,ADAE,AESOCCD,Primary System Organ Class Code,integer,8,,,No,,Predecessor,,,AE.AESOCCD,,,
+22,ADAE,AESTDTC,Start Date/Time of Adverse Event,datetime,,,,No,,Predecessor,,,AE.AESTDTC,,,
+23,ADAE,ASTDT,Analysis Start Date,integer,8,,date9.,No,,Derived,,ADT,,,ADAE.AESTDTC,
+24,ADAE,ASTTM,Analysis Start Time,integer,8,,tod5.,No,,Derived,,ADTM,,,ADAE.AESTDTC,
+25,ADAE,ASTDTM,Analysis Start Datetime,integer,8,,datetime19.,No,,Derived,,ATM,,,ADAE.AESTDTC,
+26,ADAE,ASTDY,Analysis Start Relative Day,integer,8,,,No,,Derived,,STUDYDAY,,,,
+27,ADAE,AEENDTC,End Date/Time of Adverse Event,datetime,,,,No,,Predecessor,,,AE.AEENDTC,,,
+28,ADAE,AENDT,Analysis End Date,integer,8,,date9.,No,,Predecessor,,ADT,,,ADAE.AEENDTC,
+29,ADAE,AENTM,Analysis End Time,integer,8,,tod5.,No,,Predecessor,,ADTM,,,ADAE.AEENDTC,
+30,ADAE,AENDTM,Analysis End Datetime,integer,8,,datetime19.,No,,Predecessor,,ATM,,,ADAE.AEENDTC,
+31,ADAE,AENDY,Analysis End Relative Day,integer,8,,,No,,Derived,,STUDYDAY,,,,
+32,ADAE,AEONGO,Ongoing at End of Trial,text,,,,No,STENRF_ONG,Derived,,ADAE_AEONGO,,,,
+40,ADAE,TRTEMFL,Treatment Emergent Analysis Flag,text,1,,,No,Y,Derived,,ADAE_TRTEMFL,,,ADAE.TRTEMFL,
+41,ADAE,AESER,Serious Event,text,1,,,No,NY,Predecessor,,,AE.AESER,,,
+42,ADAE,AESEV,Severity/Intensity,text,8,,,No,AESEV,Predecessor,,,AE.AESEV,,,
+43,ADAE,ASEV,Analysis Severity/Intensity,text,8,,,No,AESEV,Derived,,ADAE_ASEV,,,,
+44,ADAE,ASEVN,Analysis Severity/Intensity (N),integer,8,,,No,AESEVN,Assigned,,,,,ASSIGN_CODELIST,
+45,ADAE,AEREL,Causality,text,,,,No,AEREL,Predecessor,,,AE.AEREL,,,
+46,ADAE,AREL,Analysis Causality,text,,,,No,AREL,Derived,,ADAE_AREL,,,,
+47,ADAE,ARELN,Analysis Causality (N),integer,8,,,No,ARELN,Assigned,,,,,ASSIGN_CODELIST,
+48,ADAE,AEACN,Action Taken with Study Treatment,text,16,,,No,ACN,Predecessor,,,AE.AEACN,,,
+49,ADAE,AACN,Analysis Action Taken Study Treatment,text,16,,,No,,Derived,,ADAE.AACN,,,,
+50,ADAE,AEOUT,Outcome of Adverse Event,text,26,,,No,OUT,Predecessor,,,AE.AEOUT,,,
+51,ADAE,AECONTRT,Concomitant or Additional Trtmnt Given,text,1,,,No,Y,Predecessor,,,AE.AECONTRT,,,
+52,ADAE,AESCONG,Congenital Anomaly or Birth Defect,text,1,,,No,Y,Predecessor,,,AE.AESCONG,,,
+53,ADAE,AESDISAB,Persist or Signif Disability/Incapacity,text,1,,,No,Y,Predecessor,,,AE.AESDISAB,,,
+54,ADAE,AESDTH,Results in Death,text,1,,,No,Y,Predecessor,,,AE.AESDTH,,,
+55,ADAE,AESHOSP,Requires or Prolongs Hospitalization,text,1,,,No,Y,Predecessor,,,AE.AESHOSP,,,
+56,ADAE,AESLIFE,Is Life Threatening,text,1,,,No,Y,Predecessor,,,AE.AESLIFE,,,
+57,ADAE,AESMIE,Other Medically Important Serious Event,text,1,,,No,Y,Predecessor,,,AE.AESMIE,,,
+58,ADAE,AESCOD,Serious Event List of Codes,text,1,,,No,,Derived,,ADAE.AESCOD,,,,
+60,ADAE,SMQ01NAM,SMQ 01 Name,text,59,,,No,SMQ01NAM,Assigned,,ADAE_SMQ01NAM,,,,"Set to 20000006 (standardized MedDRA code for ""Drug related hepatic disorders - comprehensive search"") if AEDECOD for the AE is contained in the list of PT values from MEDDRA.SMQ_NOHIER for that SMQNAME using both Broad and Narrow terms."
+61,ADAE,SMQ01CD,SMQ 01 Code,integer,8,,,No,SMQ01CD,Assigned,,ADAE_SMQ01CD,,,,"Set  to ""Drug related hepatic disorders - comprehensive search (SMQ)"" if AEDECOD for the AE is contained in the list of PT values from MEDDRA.SMQ_NOHIER for that SMQNAME using both Broad and Narrow terms."
+62,ADAE,SMQ01SC,SMQ 01 Scope,text,6,,,No,SMQ01SC,Assigned,,ADAE_SMQ01SC,,,,Set  to the value of SCOPE on the corresponding PT record if AEDECOD  is contained in the list of PT values from MEDDRA.SMQ_NOHIER for that SMQNAME using both Broad and Narrow terms.
+63,ADAE,CQ01NAM,Customized Query 01 Name,text,23,,,No,CQ01NAM,Assigned,,ADAE_CQ01NAM,,,,
+64,ADAE,DISCFL,AE Lead to Study Discontinuation,text,1,,,No,Y,Derived,,ADAE.DISCFL,,,,
+65,ADAE,AESPID,Sponsor-Defined Identifier,text,2,,,No,,Predecessor,,,AE.AESPID,,,
+70,ADAE,AOCCIFL,1st Max Sev./Int. Occurrence Flag ,text,1,,,No,Y,Derived,,ADAE.AOCCIFL,,,,
+71,ADAE,AOCCSIFL,1st Max Sev./Int. Occur Within SOC Flag ,text,1,,,No,Y,Derived,,ADAE.AOCCSIFL,,,,
+72,ADAE,AOCCPIFL,1st Max Sev./Int. Occur Within PT Flag ,text,1,,,No,Y,Derived,,ADAE.AOCCPIFL,,,,
+73,ADAE,AOCC01FL,1st Occurrence of Drug-Rel Max Sev/Int ,text,1,,,No,Y,Derived,,ADAE.AOCC01FL,,,,
+74,ADAE,AOCC02FL,1st Occur Drug-Rel Max Sev/Int w/i SOC,text,1,,,No,Y,Derived,,ADAE.AOCC02FL,,,,
+75,ADAE,AOCC03FL,1st Occur Drug-Rel Max Sev/Int w/i PT,text,1,,,No,Y,Derived,,ADAE.AOCC03FL,,,,
+76,ADAE,AOCC04FL,1st Occurrence of Max Drug Relationship,text,1,,,No,Y,Derived,,ADAE.AOCC04FL,,,,
+77,ADAE,AOCC05FL,1st Occurrence of Max Drug Rel w/i SOC,text,1,,,No,Y,Derived,,ADAE.AOCC05FL,,,,
+78,ADAE,AOCC06FL,1st Occurrence of Max Drug Rel w/i PT,text,1,,,No,Y,Derived,,ADAE.AOCC06FL,,,,
+100,ADAE,COUNTRY,Country,text,,,,No,COUNTRY,Predecessor,,,ADSL.COUNTRY,,,
+101,ADAE,AGE,Age,integer,8,,,No,,Predecessor,,,ADSL.AGE,,,
+102,ADAE,AGEU,Age Units,text,,,,No,AGEU,Predecessor,,,ADSL.AGEU,,,
+103,ADAE,AAGECCM,CRF Analysis Age at Consent (Months),float,8,,,No,,Predecessor,,,ADSL.AAGECCM,,,Include if DM.AGE is different from analysis age.
+104,ADAE,AAGECCY,CRF Analysis Age at Consent (Years),float,8,,,No,,Predecessor,,,ADSL.AAGECCY,,,Include if DM.AGE is different from analysis age.
+105,ADAE,AGEGR1,Pooled Age Group 1,text,,,,No,AGEGR1,Predecessor,,,ADSL.AGEGR1,,,
+106,ADAE,AGEGR1N,Pooled Age Group 1 (N),integer,8,,,No,AGEGR1N,Predecessor,,,ADSL.AGEGR1N,,,
+107,ADAE,SEX,Sex,text,,,,Yes,SEX,Predecessor,,,ADSL.SEX,,,
+108,ADAE,RACE,Race,text,,,,No,RACE,Predecessor,,,ADSL.RACE,,,
+109,ADAE,ARACE,Analysis Race,text,,,,No,ARACE,Predecessor,,,ADSL.ARACE,,,
+110,ADAE,SAFFL,Safety Population Flag,text,1,,,Yes,NY,Predecessor,,,ADSL.SAFFL,,,
+111,ADAE,FASFL,Full Analysis Set Population Flag,text,1,,,Yes,NY,Predecessor,,,ADSL.FASFL,,,To be used only if a full analysis set has been defined in the SAP.
+112,ADAE,PKFL,Pharmacokinetic Population Flag,text,1,,,Yes,NY,Predecessor,,,ADSL.PKFL,,,To be used only if a PK analysis set has been defined in the SAP.
+113,ADAE,TRTSDT,Date of First Exposure to Treatment,integer,8,,date9.,No,,Predecessor,,,ADSL.TRTSDT,,,
+114,ADAE,TRTEDT,Date of Last Exposure to Treatment,integer,8,,date9.,No,,Predecessor,,,ADSL.TRTEDT,,,
+115,ADAE,MONTH6DT,Date of Month 6 Visit,integer,8,,date9.,No,,Predecessor,,,ADSL.MONTH6DT,,,
+116,ADAE,PH1SDT,Phase 1 Start Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH1SDT,,,Only needed if multiple analysis phases are defined.
+117,ADAE,PH1EDT,Phase 1 End Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH1EDT,,,Only needed if multiple analysis phases are defined.
+118,ADAE,PH2SDT,Phase 2 Start Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH2SDT,,,Only needed if multiple analysis phases are defined.
+119,ADAE,PH2EDT,Phase 2 End Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH2EDT,,,Only needed if multiple analysis phases are defined.
+120,ADAE,WTBLGR1,Baseline Weight Group 1,text,,,,No,WTBLGR1,Predecessor,,,ADSL.WTBLGR1,,,
+121,ADAE,WTBLGR1N,Baseline Weight Group 1 (N),integer,8,,,No,WTBLGR1N,Predecessor,,,ADSL.WTBLGR1N,,,
+1,ADEXSUM,STUDYID,Study Identifier,text,,,,Yes,,Predecessor,,,ADEX.STUDYID,,,
+2,ADEXSUM,USUBJID,Unique Subject Identifier,text,,,,Yes,,Predecessor,,,ADEX.USUBJID,,,
+3,ADEXSUM,SUBJID,Subject Identifier for the Study,text,,,,Yes,,Predecessor,,,ADSL.SUBJID,,,
+4,ADEXSUM,SITEID,Study Site Identifier,text,,,,Yes,,Predecessor,,,ADSL.SITEID,,,
+6,ADEXSUM,TRTP,Planned Treatment,text,,,,No,TRT01,Predecessor,,,ADSL.TRT01P,,,"Origin depends on study design.  If derived, populate Method.  If predecessor, populate Predecessor."
+7,ADEXSUM,TRTPN,Planned Treatment (N),integer,,,,No,TRT01N,Assigned,,,ADSL.TRT01PN,,ASSIGN_CODELIST,
+,ADEXSUM,APHASE,Phase,text,,,,Yes,APHASE,Derived,,ADEX_APHASE,,,,
+,ADEXSUM,AVISIT,Analysis Visit,text,,,,No,AVISIT_D1,Predecessor,,,EC.VISIT where EC.ECMOOD = 'PERFORMED',,,
+,ADEXSUM,AVISITN,Analysis Visit (N),float,,2,,No,AVISITN_D1,Assigned,,,,,ASSIGN_CODELIST,
+,ADEXSUM,PARAM,Parameter ,text,,,,No,ADEXSUM_PARAM,Assigned,,,,,ASSIGN_CODELIST,
+,ADEXSUM,PARAMCD,Parameter Code,text,,,,No,ADEXSUM_PARAMCD,Assigned,,,,,,
+,ADEXSUM,PARAMN,Parameter Number,integer,,,,No,ADEXSUM_PARAMN,Assigned,,,,,ASSIGN_CODELIST,
+,ADEXSUM,AVAL,Analysis Value,float,,,,No,,Derived,,,,,SEE_VLM,See value-level metadata
+,ADEXSUM,AVALC,Analysis Value (C),text,,,,No,,Derived,,,,,SEE_VLM,See value-level metadata
+,ADEXSUM,AVALCAT1,Analysis Value Category 1,text,,,,No,,Derived,,,,,SEE_VLM,See value-level metadata
+,ADEXSUM,AVALCA1N,Analysis Value Category 1 (N),integer,,,,No,,Assigned,,,,,SEE_VLM,See value-level metadata
+,ADEXSUM,SRCDOM,Source Data,text,,,,No,,Assigned,,,,,SEE_VLM,See value-level metadata
+,ADEXSUM,SRCVAR,Source Variable,text,,,,No,,Assigned,,,,,SEE_VLM,See value-level metadata
+,ADEXSUM,SRCSEQ,Source Sequence,integer,,,,No,,Assigned,,,,,SEE_VLM,See value-level metadata
+100,ADEXSUM,COUNTRY,Country,text,,,,No,COUNTRY,Predecessor,,,ADSL.COUNTRY,,,
+101,ADEXSUM,AGE,Age,integer,8,,,No,,Predecessor,,,ADSL.AGE,,,
+102,ADEXSUM,AGEU,Age Units,text,,,,No,AGEU,Predecessor,,,ADSL.AGEU,,,
+103,ADEXSUM,AAGECCM,CRF Analysis Age at Consent (Months),float,8,,,No,,Predecessor,,,ADSL.AAGECCM,,,Include if DM.AGE is different from analysis age.
+104,ADEXSUM,AAGECCY,CRF Analysis Age at Consent (Years),float,8,,,No,,Predecessor,,,ADSL.AAGECCY,,,Include if DM.AGE is different from analysis age.
+105,ADEXSUM,AGEGR1,Pooled Age Group 1,text,,,,No,AGEGR1,Predecessor,,,ADSL.AGEGR1,,,
+106,ADEXSUM,AGEGR1N,Pooled Age Group 1 (N),integer,8,,,No,AGEGR1N,Predecessor,,,ADSL.AGEGR1N,,,
+107,ADEXSUM,SEX,Sex,text,,,,Yes,SEX,Predecessor,,,ADSL.SEX,,,
+108,ADEXSUM,RACE,Race,text,,,,No,RACE,Predecessor,,,ADSL.RACE,,,
+109,ADEXSUM,ARACE,Analysis Race,text,,,,No,ARACE,Predecessor,,,ADSL.ARACE,,,
+110,ADEXSUM,SAFFL,Safety Population Flag,text,1,,,Yes,NY,Predecessor,,,ADSL.SAFFL,,,
+111,ADEXSUM,FASFL,Full Analysis Set Population Flag,text,1,,,Yes,NY,Predecessor,,,ADSL.FASFL,,,To be used only if a full analysis set has been defined in the SAP.
+112,ADEXSUM,PKFL,Pharmacokinetic Population Flag,text,1,,,Yes,NY,Predecessor,,,ADSL.PKFL,,,To be used only if a PK analysis set has been defined in the SAP.
+113,ADEXSUM,TRTSDT,Date of First Exposure to Treatment,integer,8,,date9.,No,,Predecessor,,,ADSL.TRTSDT,,,
+114,ADEXSUM,TRTEDT,Date of Last Exposure to Treatment,integer,8,,date9.,No,,Predecessor,,,ADSL.TRTEDT,,,
+115,ADEXSUM,MONTH6DT,Date of Month 6 Visit,integer,8,,date9.,No,,Predecessor,,,ADSL.MONTH6DT,,,
+116,ADEXSUM,PH1SDT,Phase 1 Start Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH1SDT,,,Only needed if multiple analysis phases are defined.
+117,ADEXSUM,PH1EDT,Phase 1 End Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH1EDT,,,Only needed if multiple analysis phases are defined.
+118,ADEXSUM,PH2SDT,Phase 2 Start Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH2SDT,,,Only needed if multiple analysis phases are defined.
+119,ADEXSUM,PH2EDT,Phase 2 End Date,integer,8,,date9.,No,,Predecessor,,,ADSL.PH2EDT,,,Only needed if multiple analysis phases are defined.
+120,ADEXSUM,WTBLGR1,Baseline Weight Group 1,text,,,,No,WTBLGR1,Predecessor,,,ADSL.WTBLGR1,,,
+121,ADEXSUM,WTBLGR1N,Baseline Weight Group 1 (N),integer,8,,,No,WTBLGR1N,Predecessor,,,ADSL.WTBLGR1N,,,
